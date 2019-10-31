@@ -1,4 +1,69 @@
 import ava from 'ava';
-import Util from '../dist';
+import { RequestHandler } from '../dist';
+import { get, getAll, getThrows, getAllThrows, allSettled } from './lib/mock';
 
-//... others
+ava('fields', (test): void => {
+	test.plan(2);
+
+	const rh = new RequestHandler(get, getAll);
+	test.is(rh.getFn, get);
+	test.is(rh.getAllFn, getAll);
+});
+
+ava('get', async (test): Promise<void> => {
+	const rh = new RequestHandler(get, getAll);
+	const value = await rh.push('Hello');
+	test.deepEqual(value, { id: 'Hello', value: 0 });
+});
+
+ava('get(Duplicated)', async (test): Promise<void> => {
+	test.plan(3);
+
+	const rh = new RequestHandler(get, getAll);
+	const values = await Promise.all(['Hello', 'Hello', 'Hello'].map(key => rh.push(key)));
+	test.deepEqual(values[0], { id: 'Hello', value: 0 });
+	test.deepEqual(values[1], { id: 'Hello', value: 0 });
+	test.deepEqual(values[2], { id: 'Hello', value: 0 });
+});
+
+ava('getMultiple(Sequential)', async (test): Promise<void> => {
+	test.plan(2);
+
+	const rh = new RequestHandler(get, getAll);
+	test.deepEqual(await rh.push('Hello'), { id: 'Hello', value: 0 });
+	test.deepEqual(await rh.push('World'), { id: 'World', value: 1 });
+});
+
+ava('getMultiple(Parallel)', async (test): Promise<void> => {
+	test.plan(3);
+
+	const rh = new RequestHandler(get, getAll);
+	const values = await Promise.all(['Hello', 'World', 'Foo'].map(key => rh.push(key)));
+	test.deepEqual(values[0], { id: 'Hello', value: 0 });
+	test.deepEqual(values[1], { id: 'World', value: 1 });
+	test.deepEqual(values[2], { id: 'Foo', value: 2 });
+});
+
+ava('get(Throws)', async (test): Promise<void> => {
+	const rhThrows = new RequestHandler(getThrows, getAllThrows);
+	await test.throwsAsync(() => rhThrows.push('Test3'), "Key 'Test3' does not exist.");
+});
+
+ava('getMultiple(Throws | Sequential)', async (test): Promise<void> => {
+	test.plan(2);
+
+	const rhThrows = new RequestHandler(getThrows, getAllThrows);
+	test.deepEqual(await rhThrows.push('Hello'), { id: 'Hello', value: 0 });
+	await test.throwsAsync(() => rhThrows.push('Test3'), "Key 'Test3' does not exist.");
+});
+
+ava('getMultiple(Throws | Parallel)', async (test): Promise<void> => {
+	test.plan(3);
+
+	const rhThrows = new RequestHandler(getThrows, getAllThrows);
+	const keys = ['Hello', 'World', 'Test3'];
+	const values = await allSettled(keys.map(key => rhThrows.push(key)));
+	test.deepEqual(values[0], { status: 'fulfilled', value: { id: 'Hello', value: 0 } });
+	test.deepEqual(values[1], { status: 'rejected', reason: new Error("Key 'Test3' does not exist.") });
+	test.deepEqual(values[2], { status: 'rejected', reason: new Error("Key 'Test3' does not exist.") });
+});
