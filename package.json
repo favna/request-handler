@@ -1,6 +1,6 @@
 {
   "name": "@klasa/request-handler",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Run asynchronous tasks as soon as possible, or in chunks.",
   "main": "dist/index.js",
   "scripts": {
