@@ -64,6 +64,11 @@ export class RequestHandler<K, V extends IdKeyed<K>> {
 			try {
 				const values = await this.getAllFn(keys);
 				for (const value of values) {
+					// Guard for getAll functions that return null
+					if (value === null || typeof value !== 'object') continue;
+
+					// Retrieve the entry by the value's id, then resolve and
+					// delete it from the queue to prevent resolving twice.
 					const entry = queue.get(value.id);
 					if (typeof entry === 'undefined') continue;
 					entry.resolve(value);

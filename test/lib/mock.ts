@@ -38,6 +38,16 @@ export async function getAll(keys: readonly string[]): Promise<DataStructure[]> 
 	return values;
 }
 
+export async function getAllNulls(keys: readonly string[]): Promise<(DataStructure | null)[]> {
+	await sleep(1);
+	const values: DataStructure[] = [];
+	for (const key of keys) {
+		const value = data.get(key);
+		values.push(typeof value === 'undefined' ? null : value);
+	}
+	return values;
+}
+
 export async function getAllThrows(keys: readonly string[]): Promise<DataStructure[]> {
 	await sleep(1);
 	const values: DataStructure[] = [];

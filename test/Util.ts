@@ -1,6 +1,6 @@
 import ava from 'ava';
 import { RequestHandler } from '../dist';
-import { get, getAll, getThrows, getAllThrows, allSettled } from './lib/mock';
+import { get, getAll, getThrows, getAllThrows, allSettled, getAllNulls } from './lib/mock';
 
 const noop = (): void => { };
 
@@ -44,6 +44,26 @@ ava('getMultiple(Parallel)', async (test): Promise<void> => {
 	test.deepEqual(values[0], { id: 'Hello', value: 0 });
 	test.deepEqual(values[1], { id: 'World', value: 1 });
 	test.deepEqual(values[2], { id: 'Foo', value: 2 });
+});
+
+ava('getMultiple(Parallel | Partial)', async (test): Promise<void> => {
+	test.plan(3);
+
+	const rh = new RequestHandler(get, getAll);
+	const values = await Promise.all(['Hello', 'World', 'Test3'].map(key => rh.push(key)));
+	test.deepEqual(values[0], { id: 'Hello', value: 0 });
+	test.deepEqual(values[1], { id: 'World', value: 1 });
+	test.deepEqual(values[2], null);
+});
+
+ava('getMultiple(Parallel | Nulls)', async (test): Promise<void> => {
+	test.plan(3);
+
+	const rh = new RequestHandler(get, getAllNulls);
+	const values = await Promise.all(['Hello', 'World', 'Test3'].map(key => rh.push(key)));
+	test.deepEqual(values[0], { id: 'Hello', value: 0 });
+	test.deepEqual(values[1], { id: 'World', value: 1 });
+	test.deepEqual(values[2], null);
 });
 
 ava('get(Throws)', async (test): Promise<void> => {
