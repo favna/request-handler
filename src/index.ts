@@ -26,6 +26,27 @@ export class RequestHandler<K, V extends IdKeyed<K>> {
 		return referredPromise.promise;
 	}
 
+	public async wait(): Promise<void> {
+		if (this.synchronizing === null) return;
+
+		// Wait for the current synchronization
+		try {
+			await this.synchronizing;
+		} catch {
+			// noop
+		}
+
+		// Wait for the next synchronization if it exists, `this.synchronizing` is re-set before the previous one has resolved, making this possible.
+		// The reason why we do this is because we may have pushed multiple elements to the queue *while* the RequestHandler is running another request.
+		if (this.synchronizing !== null) {
+			try {
+				await this.synchronizing;
+			} catch {
+				// noop
+			}
+		}
+	}
+
 	private async run(): Promise<void> {
 		const { queue } = this;
 		this.queue = new Map();

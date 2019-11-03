@@ -2,6 +2,8 @@ import ava from 'ava';
 import { RequestHandler } from '../dist';
 import { get, getAll, getThrows, getAllThrows, allSettled } from './lib/mock';
 
+const noop = (): void => { };
+
 ava('fields', (test): void => {
 	test.plan(2);
 
@@ -66,4 +68,59 @@ ava('getMultiple(Throws | Parallel)', async (test): Promise<void> => {
 	test.deepEqual(values[0], { status: 'fulfilled', value: { id: 'Hello', value: 0 } });
 	test.deepEqual(values[1], { status: 'rejected', reason: new Error("Key 'Test3' does not exist.") });
 	test.deepEqual(values[2], { status: 'rejected', reason: new Error("Key 'Test3' does not exist.") });
+});
+
+ava('wait', async (test): Promise<void> => {
+	const rh = new RequestHandler(get, getAll);
+
+	let counter = 1;
+	rh.push('Hello').finally(() => --counter);
+	await rh.wait();
+	test.deepEqual(counter, 0);
+});
+
+ava('wait(Empty)', async (test): Promise<void> => {
+	const rh = new RequestHandler(get, getAll);
+	await test.notThrowsAsync(() => rh.wait());
+});
+
+ava('wait(Throws)', async (test): Promise<void> => {
+	const rh = new RequestHandler(getThrows, getAllThrows);
+
+	let counter = 1;
+	rh.push('Test3').catch(noop).finally(() => --counter);
+	await rh.wait();
+	test.deepEqual(counter, 0);
+});
+
+ava('wait(Multiple)', async (test): Promise<void> => {
+	const rh = new RequestHandler(get, getAll);
+
+	let counter = 2;
+	rh.push('Hello').finally(() => --counter);
+	rh.push('World').finally(() => --counter);
+	await rh.wait();
+	test.deepEqual(counter, 0);
+});
+
+ava('wait(Multiple | Duplicated)', async (test): Promise<void> => {
+	const rh = new RequestHandler(get, getAll);
+
+	let counter = 3;
+	rh.push('Hello').finally(() => --counter);
+	rh.push('Hello').finally(() => --counter);
+	rh.push('World').finally(() => --counter);
+	await rh.wait();
+	test.deepEqual(counter, 0);
+});
+
+ava('wait(Multiple | Throws)', async (test): Promise<void> => {
+	const rh = new RequestHandler(getThrows, getAllThrows);
+
+	let counter = 3;
+	rh.push('Test3').catch(noop).finally(() => --counter);
+	rh.push('Hello').finally(() => --counter);
+	rh.push('World').finally(() => --counter);
+	await rh.wait();
+	test.deepEqual(counter, 0);
 });
