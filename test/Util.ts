@@ -2,6 +2,7 @@ import ava from 'ava';
 import { RequestHandler } from '../dist';
 import { get, getAll, getThrows, getAllThrows, allSettled, getAllNulls } from './lib/mock';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => { };
 
 ava('fields', (test): void => {
@@ -68,7 +69,7 @@ ava('getMultiple(Parallel | Nulls)', async (test): Promise<void> => {
 
 ava('get(Throws)', async (test): Promise<void> => {
 	const rhThrows = new RequestHandler(getThrows, getAllThrows);
-	await test.throwsAsync(() => rhThrows.push('Test3'), "Key 'Test3' does not exist.");
+	await test.throwsAsync(() => rhThrows.push('Test3'), { message: "Key 'Test3' does not exist." });
 });
 
 ava('getMultiple(Throws | Sequential)', async (test): Promise<void> => {
@@ -76,7 +77,7 @@ ava('getMultiple(Throws | Sequential)', async (test): Promise<void> => {
 
 	const rhThrows = new RequestHandler(getThrows, getAllThrows);
 	test.deepEqual(await rhThrows.push('Hello'), { id: 'Hello', value: 0 });
-	await test.throwsAsync(() => rhThrows.push('Test3'), "Key 'Test3' does not exist.");
+	await test.throwsAsync(() => rhThrows.push('Test3'), { message: "Key 'Test3' does not exist." });
 });
 
 ava('getMultiple(Throws | Parallel)', async (test): Promise<void> => {
