@@ -1,0 +1,1004 @@
+{
+	"id": 0,
+	"name": "@klasa/request-handler",
+	"kind": 0,
+	"flags": {},
+	"originalName": "",
+	"children": [
+		{
+			"id": 1,
+			"name": "\"index\"",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {
+				"isExported": true
+			},
+			"originalName": "/home/runner/work/request-handler/request-handler/src/index.ts",
+			"children": [
+				{
+					"id": 2,
+					"name": "RequestHandler",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 3,
+							"name": "K",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						},
+						{
+							"id": 4,
+							"name": "V",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							},
+							"type": {
+								"type": "reference",
+								"id": 24,
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "K"
+									}
+								],
+								"name": "IdKeyed"
+							}
+						}
+					],
+					"children": [
+						{
+							"id": 9,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {
+								"isPublic": true,
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 10,
+									"name": "new RequestHandler",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 11,
+											"name": "getFn",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "reference",
+												"id": 27,
+												"typeArguments": [
+													{
+														"type": "typeParameter",
+														"name": "K"
+													},
+													{
+														"type": "typeParameter",
+														"name": "V",
+														"constraint": {
+															"type": "reference",
+															"id": 24,
+															"typeArguments": [
+																{
+																	"type": "typeParameter",
+																	"name": "K"
+																}
+															],
+															"name": "IdKeyed"
+														}
+													}
+												],
+												"name": "GetFn"
+											}
+										},
+										{
+											"id": 12,
+											"name": "getAllFn",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "reference",
+												"id": 32,
+												"typeArguments": [
+													{
+														"type": "typeParameter",
+														"name": "K"
+													},
+													{
+														"type": "typeParameter",
+														"name": "V",
+														"constraint": {
+															"type": "reference",
+															"id": 24,
+															"typeArguments": [
+																{
+																	"type": "typeParameter",
+																	"name": "K"
+																}
+															],
+															"name": "IdKeyed"
+														}
+													}
+												],
+												"name": "GetAllFn"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"id": 2,
+										"name": "RequestHandler"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 6,
+									"character": 52
+								}
+							]
+						},
+						{
+							"id": 6,
+							"name": "getAllFn",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPublic": true,
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 4,
+									"character": 16
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 32,
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "K"
+									},
+									{
+										"type": "typeParameter",
+										"name": "V",
+										"constraint": {
+											"type": "reference",
+											"id": 24,
+											"typeArguments": [
+												{
+													"type": "typeParameter",
+													"name": "K"
+												}
+											],
+											"name": "IdKeyed"
+										}
+									}
+								],
+								"name": "GetAllFn"
+							}
+						},
+						{
+							"id": 5,
+							"name": "getFn",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPublic": true,
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 3,
+									"character": 13
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 27,
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "K"
+									},
+									{
+										"type": "typeParameter",
+										"name": "V",
+										"constraint": {
+											"type": "reference",
+											"id": 24,
+											"typeArguments": [
+												{
+													"type": "typeParameter",
+													"name": "K"
+												}
+											],
+											"name": "IdKeyed"
+										}
+									}
+								],
+								"name": "GetFn"
+							}
+						},
+						{
+							"id": 7,
+							"name": "queue",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPrivate": true,
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 5,
+									"character": 14
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "unknown",
+										"name": "K"
+									},
+									{
+										"type": "reference",
+										"id": 37,
+										"typeArguments": [
+											{
+												"type": "unknown",
+												"name": "V"
+											}
+										],
+										"name": "ReferredPromise"
+									}
+								],
+								"name": "Map"
+							},
+							"defaultValue": "new Map<K, ReferredPromise<V | null>>()"
+						},
+						{
+							"id": 8,
+							"name": "synchronizing",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPrivate": true,
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 6,
+									"character": 22
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "void"
+											}
+										],
+										"name": "Promise"
+									},
+									{
+										"type": "intrinsic",
+										"name": "null"
+									}
+								]
+							},
+							"defaultValue": "null"
+						},
+						{
+							"id": 13,
+							"name": "available",
+							"kind": 262144,
+							"kindString": "Accessor",
+							"flags": {
+								"isPublic": true,
+								"isExported": true
+							},
+							"getSignature": [
+								{
+									"id": 14,
+									"name": "__get",
+									"kind": 524288,
+									"kindString": "Get signature",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 13,
+									"character": 21
+								}
+							]
+						},
+						{
+							"id": 22,
+							"name": "createReferPromise",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true,
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 23,
+									"name": "createReferPromise",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 37,
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "V",
+												"constraint": {
+													"type": "reference",
+													"id": 24,
+													"typeArguments": [
+														{
+															"type": "typeParameter",
+															"name": "K"
+														}
+													],
+													"name": "IdKeyed"
+												}
+											}
+										],
+										"name": "ReferredPromise"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 90,
+									"character": 27
+								}
+							]
+						},
+						{
+							"id": 15,
+							"name": "push",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 16,
+									"name": "push",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 17,
+											"name": "key",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "typeParameter",
+												"name": "K"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "V",
+												"constraint": {
+													"type": "reference",
+													"id": 24,
+													"typeArguments": [
+														{
+															"type": "typeParameter",
+															"name": "K"
+														}
+													],
+													"name": "IdKeyed"
+												}
+											}
+										],
+										"name": "Promise"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 17,
+									"character": 12
+								}
+							]
+						},
+						{
+							"id": 20,
+							"name": "run",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true,
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 21,
+									"name": "run",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "void"
+											}
+										],
+										"name": "Promise"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 50,
+									"character": 18
+								}
+							]
+						},
+						{
+							"id": 18,
+							"name": "wait",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 19,
+									"name": "wait",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "void"
+											}
+										],
+										"name": "Promise"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 29,
+									"character": 18
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								9
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								6,
+								5,
+								7,
+								8
+							]
+						},
+						{
+							"title": "Accessors",
+							"kind": 262144,
+							"children": [
+								13
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								22,
+								15,
+								20,
+								18
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 1,
+							"character": 27
+						}
+					]
+				},
+				{
+					"id": 32,
+					"name": "GetAllFn",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 33,
+							"name": "K",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						},
+						{
+							"id": 34,
+							"name": "V",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						}
+					],
+					"signatures": [
+						{
+							"id": 35,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 36,
+									"name": "keys",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "typeParameter",
+											"name": "K"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "array",
+										"elementType": {
+											"type": "typeParameter",
+											"name": "V"
+										}
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 111,
+							"character": 25
+						}
+					]
+				},
+				{
+					"id": 27,
+					"name": "GetFn",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 28,
+							"name": "K",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						},
+						{
+							"id": 29,
+							"name": "V",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						}
+					],
+					"signatures": [
+						{
+							"id": 30,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 31,
+									"name": "key",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "typeParameter",
+										"name": "K"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "V"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 107,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 24,
+					"name": "IdKeyed",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 25,
+							"name": "K",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						}
+					],
+					"children": [
+						{
+							"id": 26,
+							"name": "id",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 104,
+									"character": 3
+								}
+							],
+							"type": {
+								"type": "typeParameter",
+								"name": "K"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								26
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 103,
+							"character": 24
+						}
+					]
+				},
+				{
+					"id": 37,
+					"name": "ReferredPromise",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 38,
+							"name": "T",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						}
+					],
+					"children": [
+						{
+							"id": 39,
+							"name": "promise",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 116,
+									"character": 8
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								],
+								"name": "Promise"
+							}
+						},
+						{
+							"id": 43,
+							"name": "reject",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 44,
+									"name": "reject",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 45,
+											"name": "error",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Error"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 118,
+									"character": 7
+								}
+							]
+						},
+						{
+							"id": 40,
+							"name": "resolve",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 41,
+									"name": "resolve",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 42,
+											"name": "value",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "typeParameter",
+												"name": "T"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 117,
+									"character": 8
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								39
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								43,
+								40
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 115,
+							"character": 32
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"kind": 128,
+					"children": [
+						2
+					]
+				},
+				{
+					"title": "Interfaces",
+					"kind": 256,
+					"children": [
+						32,
+						27,
+						24,
+						37
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "Modules",
+			"kind": 1,
+			"children": [
+				1
+			]
+		}
+	]
+}
