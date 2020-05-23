@@ -1,5 +1,5 @@
 import ava from 'ava';
-import { RequestHandler } from '../dist';
+import { RequestHandler } from '../src';
 import { get, getAll, getThrows, getAllThrows, allSettled, getAllNulls } from './lib/mock';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
